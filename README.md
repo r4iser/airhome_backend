@@ -1,2 +1,2 @@
-# airhome
-A short study using Airbnb.
+# airHome
+A short study using NodeJS, ReactJS, Reactive Native.
