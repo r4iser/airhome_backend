@@ -1,4 +1,5 @@
 const Spot = require('../models/Spot');
+const User = require('../models/User');
 
 module.exports = {
     async index(req, res) {
@@ -13,6 +14,12 @@ module.exports = {
         const { filename } = req.file;
         const { company, minimum_price, description, observations, city, state   } = req.body;
         const { user_id } = req.headers;
+
+        const user = await User.findById(user_id);
+
+        if (!user) {
+            return res.status(400).json({ error: 'Usuário inexistente.' });
+        }
 
         const spot = await Spot.create({
             user: user_id,
